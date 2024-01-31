@@ -65,3 +65,15 @@ async function addRole(roleTitle, roleSalary, departmentId) {
       throw error;
     }
   }
+
+  // Function to update an employee's role
+async function updateEmployeeRole(employeeId, roleId) {
+    try {
+      const [result] = await db.query('UPDATE employee SET role_id = ? WHERE id = ?', [roleId, employeeId]);
+      return result.affectedRows; // Return the number of affected rows
+    } catch (error) {
+      console.error('Error in updateEmployeeRole:', error);
+      throw error;
+    }
+  }
+  
