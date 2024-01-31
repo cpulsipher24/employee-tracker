@@ -1,3 +1,5 @@
+USE employee_tracker;
+
 -- Drop tables if they exist (for development purposes)
 DROP TABLE IF EXISTS employee;
 DROP TABLE IF EXISTS role;
