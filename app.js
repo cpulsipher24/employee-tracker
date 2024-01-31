@@ -78,3 +78,7 @@ async function addDepartment() {
     type: 'input',
     message: 'Enter the name of the department:',
   });
+
+  await queries.addDepartment(departmentName);
+  console.log(`Department "${departmentName}" added successfully.`);
+}
