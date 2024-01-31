@@ -44,3 +44,24 @@ async function addDepartment(departmentName) {
     }
   }
   
+  // Function to add a role
+async function addRole(roleTitle, roleSalary, departmentId) {
+    try {
+      const [result] = await db.query('INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)', [roleTitle, roleSalary, departmentId]);
+      return result.insertId; // Return the ID of the newly inserted role
+    } catch (error) {
+      console.error('Error in addRole:', error);
+      throw error;
+    }
+  }
+  
+  // Function to add an employee
+  async function addEmployee(firstName, lastName, roleId, managerId) {
+    try {
+      const [result] = await db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', [firstName, lastName, roleId, managerId]);
+      return result.insertId; // Return the ID of the newly inserted employee
+    } catch (error) {
+      console.error('Error in addEmployee:', error);
+      throw error;
+    }
+  }
