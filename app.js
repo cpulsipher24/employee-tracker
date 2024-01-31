@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
-const queries = require('./queries'); // Adjust the path if needed
+const queries = require('./queries');
+const db = require('./db');
 
 // Main function to start the application
 async function startApp() {

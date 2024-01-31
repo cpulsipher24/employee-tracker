@@ -1,0 +1,4 @@
+# .gitignore
+
+# Database configuration
+db.js
