@@ -77,3 +77,12 @@ async function updateEmployeeRole(employeeId, roleId) {
     }
   }
   
+  module.exports = {
+    getAllDepartments,
+    getAllRoles,
+    getAllEmployees,
+    addDepartment,
+    addRole,
+    addEmployee,
+    updateEmployeeRole,
+  };
