@@ -97,3 +97,6 @@ async function addEmployee() {
   async function updateEmployeeRole() {
     console.log('Employee role updated successfully.');
   }
+
+  // Start the application
+startApp();
