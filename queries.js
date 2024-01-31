@@ -32,3 +32,15 @@ async function getAllRoles() {
       throw error;
     }
   }
+
+  // Function to add a department
+async function addDepartment(departmentName) {
+    try {
+      const [result] = await db.query('INSERT INTO department (name) VALUES (?)', [departmentName]);
+      return result.insertId; // Return the ID of the newly inserted department
+    } catch (error) {
+      console.error('Error in addDepartment:', error);
+      throw error;
+    }
+  }
+  
