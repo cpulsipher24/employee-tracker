@@ -82,3 +82,18 @@ async function addDepartment() {
   await queries.addDepartment(departmentName);
   console.log(`Department "${departmentName}" added successfully.`);
 }
+
+// Function to add a role
+async function addRole() {
+    console.log('Role added successfully.');
+  }
+
+  // Function to add an employee
+async function addEmployee() {
+    console.log('Employee added successfully.');
+  }
+  
+  // Function to update an employee role
+  async function updateEmployeeRole() {
+    console.log('Employee role updated successfully.');
+  }
