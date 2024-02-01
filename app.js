@@ -68,9 +68,9 @@ async function viewAllRoles() {
 
 // Function to view all employees
 async function viewAllEmployees() {
-  const employees = await queries.getAllEmployees();
-  console.table(employees);
-}
+    const employees = await queries.getAllEmployeesDetails();
+    console.table(employees);
+  }
 
 // Function to add a department
 async function addDepartment() {

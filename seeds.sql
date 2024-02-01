@@ -1,3 +1,5 @@
+USE employee_tracker;
+
 -- Insert sample data into department table
 INSERT INTO department (name) VALUES
   ('Engineering'),
