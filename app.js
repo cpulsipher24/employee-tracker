@@ -70,7 +70,7 @@ async function viewAllRoles() {
 async function viewAllEmployees() {
     const employees = await queries.getAllEmployeesDetails();
     console.table(employees);
-  }
+}
 
 // Function to add a department
 async function addDepartment() {

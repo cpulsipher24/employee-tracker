@@ -1,3 +1,4 @@
+const inquirer = require('inquirer');
 const db = require('./db');
 
 // Function to get all departments
@@ -24,29 +25,29 @@ async function getAllRoles() {
 
 // Function to get all employees
 async function getAllEmployeesDetails() {
-    try {
-      const query = `
-        SELECT
-          employee.id,
-          employee.first_name,
-          employee.last_name,
-          role.title AS job_title,
-          department.name AS department,
-          role.salary,
-          CONCAT(manager.first_name, ' ', manager.last_name) AS manager
-        FROM
-          employee
-          LEFT JOIN role ON employee.role_id = role.id
-          LEFT JOIN department ON role.department_id = department.id
-          LEFT JOIN employee manager ON employee.manager_id = manager.id
-      `;
-      const [rows, fields] = await db.query(query);
-      return rows;
-    } catch (error) {
-      console.error('Error in getAllEmployeesDetails:', error);
-      throw error;
-    }
+  try {
+    const query = `
+      SELECT
+        employee.id,
+        employee.first_name,
+        employee.last_name,
+        role.title AS job_title,
+        department.name AS department,
+        role.salary,
+        CONCAT(manager.first_name, ' ', manager.last_name) AS manager
+      FROM
+        employee
+        LEFT JOIN role ON employee.role_id = role.id
+        LEFT JOIN department ON role.department_id = department.id
+        LEFT JOIN employee manager ON employee.manager_id = manager.id
+    `;
+    const [rows, fields] = await db.query(query);
+    return rows;
+  } catch (error) {
+    console.error('Error in getAllEmployeesDetails:', error);
+    throw error;
   }
+}
 
 // Function to add a department
 async function addDepartment(departmentName) {
@@ -72,14 +73,14 @@ async function addRole(roleTitle, roleSalary, departmentId) {
 
 // Function to add an employee
 async function addEmployee(firstName, lastName, roleId, managerId) {
-    try {
-      const [result] = await db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', [firstName, lastName, roleId, managerId]);
-      return result.insertId; // Return the ID of the newly inserted employee
-    } catch (error) {
-      console.error('Error in addEmployee:', error);
-      throw error;
-    }
-  }  
+  try {
+    const [result] = await db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', [firstName, lastName, roleId, managerId]);
+    return result.insertId; // Return the ID of the newly inserted employee
+  } catch (error) {
+    console.error('Error in addEmployee:', error);
+    throw error;
+  }
+}
 
 // Function to update an employee's role
 async function updateEmployeeRole(employeeId, roleId) {
@@ -95,7 +96,7 @@ async function updateEmployeeRole(employeeId, roleId) {
 module.exports = {
   getAllDepartments,
   getAllRoles,
-  getAllEmployees,
+  getAllEmployeesDetails,
   addDepartment,
   addRole,
   addEmployee,
