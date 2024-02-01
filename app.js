@@ -86,18 +86,62 @@ async function addDepartment() {
 
 // Function to add a role
 async function addRole() {
-    console.log('Role added successfully.');
-  }
+  const { title, salary, department_id } = await inquirer.prompt([
+    {
+      name: 'title',
+      type: 'input',
+      message: 'Enter the title of the role:',
+    },
+    {
+      name: 'salary',
+      type: 'input',
+      message: 'Enter the salary for the role:',
+    },
+    {
+      name: 'department_id',
+      type: 'input',
+      message: 'Enter the department ID for the role:',
+    },
+  ]);
 
-  // Function to add an employee
+  await queries.addRole(title, salary, department_id);
+  console.log(`Role "${title}" added successfully.`);
+}
+
+// Function to add an employee
 async function addEmployee() {
-    console.log('Employee added successfully.');
-  }
-  
-  // Function to update an employee role
-  async function updateEmployeeRole() {
-    console.log('Employee role updated successfully.');
-  }
+  const { first_name, last_name, role_id, manager_id } = await inquirer.prompt([
+    {
+      name: 'first_name',
+      type: 'input',
+      message: "Enter the employee's first name:",
+    },
+    {
+      name: 'last_name',
+      type: 'input',
+      message: "Enter the employee's last name:",
+    },
+    {
+      name: 'role_id',
+      type: 'input',
+      message: "Enter the role ID for the employee:",
+    },
+    {
+      name: 'manager_id',
+      type: 'input',
+      message: "Enter the manager ID for the employee (if applicable):",
+    },
+  ]);
 
-  // Start the application
+  await queries.addEmployee(first_name, last_name, role_id, manager_id);
+  console.log('Employee added successfully.');
+}
+
+// Function to update an employee role
+async function updateEmployeeRole() {
+  // Add logic to update employee role
+  console.log('Employee role updated successfully.');
+}
+
+// Start the application
 startApp();
