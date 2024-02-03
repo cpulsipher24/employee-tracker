@@ -1,9 +1,16 @@
 const inquirer = require('inquirer');
 const queries = require('./queries');
 const db = require('./db');
+const figlet = require('figlet');
+
+// Function to display the app logo
+function displayLogo() {
+  console.log(figlet.textSync('Employee Tracker', 'Standard'));
+}
 
 // Main function to start the application
 async function startApp() {
+  displayLogo(); // Display the logo when the app is opened
   console.log('Welcome to the Employee Tracker!');
 
   while (true) {
@@ -68,8 +75,8 @@ async function viewAllRoles() {
 
 // Function to view all employees
 async function viewAllEmployees() {
-    const employees = await queries.getAllEmployeesDetails();
-    console.table(employees);
+  const employees = await queries.getAllEmployeesDetails();
+  console.table(employees);
 }
 
 // Function to add a department
